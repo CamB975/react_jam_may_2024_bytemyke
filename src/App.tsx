@@ -5,7 +5,6 @@ import { $stage } from "./state/state.ts"
 import { GettingReadyScreen } from "./components/GettingReadyScreen/GettingReadyScreen.tsx"
 import { CountdownOverlay } from "./components/CountdownOverlay.tsx"
 import { EndOfRoundOverlay } from "./components/EndOfRoundOverlay.tsx"
-import { BoardScreen } from "./components/BoardScreen/BoardScreen.tsx"
 import { gridBackground } from "./lib/gridBackground.ts"
 import { useEffect } from "react"
 import { playSound } from "./sounds.ts"
@@ -32,7 +31,7 @@ export function App() {
   return (
     <>
       <Root>
-        {stage === "gettingReady" ? <GettingReadyScreen /> : <BoardScreen />}
+        {stage === "gettingReady" ? <GettingReadyScreen /> : <Game />}
         {stage === "countdown" && <CountdownOverlay />}
         {stage === "endOfRound" && <EndOfRoundOverlay />}
       </Root>

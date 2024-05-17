@@ -20,7 +20,7 @@ Rune.initLogic({
         state: "alive",
         score: 0,
       })),
-      snakes: allPlayerIds.reduce<GameState["snakes"]>(
+      scores: allPlayerIds.reduce<GameState["scores"]>(
         (acc, playerId) => ({
           ...acc,
           [playerId]: {
@@ -41,8 +41,8 @@ Rune.initLogic({
   inputDelay: 50,
   updatesPerSecond: 30,
   actions: {
-    setTurning(turning, { game, playerId }) {
-      game.snakes[playerId].turning = turning
+    setScore(score, { game, playerId }) {
+      game.scores[playerId].score = score
     },
     setReady(_, { game }) {
       if (game.stage !== "gettingReady") throw Rune.invalidAction()
@@ -62,11 +62,8 @@ Rune.initLogic({
         state: "pending",
         score: 0,
       })
-      game.snakes[playerId] = {
-        gapCounter: 0,
-        turning: "none",
-        sections: [getRandomInitialSection()],
-        lastCollisionGridPoints: [],
+      game.scores[playerId] = {
+        score:  0,
       }
     },
     playerLeft: (playerId, { game }) => {
@@ -75,7 +72,7 @@ Rune.initLogic({
       if (!~playerIndex) throw Rune.invalidAction()
 
       game.players.splice(playerIndex, 1)
-      delete game.snakes[playerId]
+      delete game.scores[playerId]
 
       if (game.stage === "playing" || game.stage === "countdown") {
         checkWinnersAndGameOver(game)
