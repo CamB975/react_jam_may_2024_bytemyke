@@ -30,7 +30,7 @@ export function App() {
   }, [])
 
   return (
-    <>
+   <>
       <Root>
         {stage === "gettingReady" ? <GettingReadyScreen /> : <BoardScreen />}
         {stage === "countdown" && <CountdownOverlay />}
