@@ -53,9 +53,15 @@ export type PlayerInfo = {
   color: string
   state: State
   score: number
-  diedAt?: number
+  gamesWon: number
 }
 
+// export type Snake = {
+//   gapCounter: number
+//   turning: "left" | "right" | "none"
+//   sections: [Section, ...Section[]]
+//   lastCollisionGridPoints: Point[]
+// }
 // export type Snake = {
 //   gapCounter: number
 //   turning: "left" | "right" | "none"
